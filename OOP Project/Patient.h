@@ -11,6 +11,8 @@ private:
 public:
     Patient();
     Patient(int, const char*, int, char,const char*, const char*, float);
+    Patient(const Patient&);
+    Patient& operator=(const Patient&);
     ~Patient() override;
 
     // Getters
