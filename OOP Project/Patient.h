@@ -6,7 +6,7 @@ class Patient : public Person
 {
 private:
     int age;
-    char gender[6];   // Male OR Female
+    char* gender;   // Male OR Female
     float balance;
 public:
     Patient();
