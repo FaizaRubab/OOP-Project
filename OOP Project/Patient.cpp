@@ -8,10 +8,28 @@ Patient::Patient() : Person(), age(0), balance(0.0f)
 
 Patient::Patient(int id, const char* name, int age, char gender,const char* contact, const char* password, float balance) : Person(id, name, contact, password), age(age), balance(balance) 
 {
+    this->gendeer=new char[1];
     this->gender[0] = gender;
-    this->gender[1] = '\0';
 }
 
+Patient::Patient(const Patient& other): Person(other), age(other.age), balance(other.balance)
+{
+    gender = new char[1];
+    gender[0] = other.gender[0];
+}
+Patient& Patient::operator=(const Patient& other)
+{
+    if (this != &other)
+    {
+        Person::operator=(other);
+        age = other.age;
+        balance = other.balance;
+        delete[] gender;
+        gender = new char[1];
+        gender[0] = other.gender[0];
+    }
+    return *this;
+}
 Patient::~Patient() {}
 
 int Patient::getAge()const 
